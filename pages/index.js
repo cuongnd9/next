@@ -1,15 +1,5 @@
-import Link from 'next/link';
+import withLayout from '../components/Layout';
 
-const Index = () => (
-  <div>
-    <Link href="/about">
-      <a>About Page</a>
-    </Link>
-    <Link href="/about">
-      <button>Go to About Page</button>
-    </Link>
-    <p>Hello Next</p>
-  </div>
-);
+const Page = () => <p>Hello Next</p>;
 
-export default Index;
+export default withLayout(Page);
