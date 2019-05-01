@@ -7,11 +7,12 @@
   "repository": "https://github.com/cuongw/next-started",
   "author": "Cuong Duy Nguyen",
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
+    "express": "^4.16.4",
     "next": "^8.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
