@@ -1,22 +1,44 @@
 import fetch from 'isomorphic-unfetch';
+import Markdown from 'react-markdown';
 import Layout from '../components/Layout';
 
 const Post = props => (
   <Layout>
-    <h1>{props.show.name}</h1>
-    <p>{props.show.summary.replace(/<[/]?p>/g, '')}</p>
-    <img src={props.show.image.medium} />
+    <div className="markdown">
+      <Markdown
+        source={`
+# ${props.show.name}
+
+${props.show.summary.replace(/<[/]?(p|b)>/g, '')}
+
+![Image](${props.show.image.original})
+     `}
+      />
+    </div>
+    <style jsx global>{`
+      .markdown {
+        font-family: 'Arial';
+        font-weight: lighter;
+        color: grey;
+      }
+
+      .markdown h1 {
+        margin: 0;
+        padding: 0;
+        text-transform: uppercase;
+      }
+    `}</style>
   </Layout>
 );
 
-Post.getInitialProps = async (context) => {
-  const { id } = context.query
-  const res = await fetch(`https://api.tvmaze.com/shows/${id}`)
-  const show = await res.json()
+Post.getInitialProps = async context => {
+  const { id } = context.query;
+  const res = await fetch(`https://api.tvmaze.com/shows/${id}`);
+  const show = await res.json();
 
-  console.log(`Fetched show: ${show.name}`)
+  console.log(`Fetched show: ${show.name}`);
 
-  return { show }
-}
+  return { show };
+};
 
 export default Post;
