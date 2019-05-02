@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "nodemon server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "now-build": "next build",
+    "start": "next start -p $PORT"
   },
   "dependencies": {
     "express": "^4.16.4",
