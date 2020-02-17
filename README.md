@@ -1,4 +1,4 @@
-# Next Starter
+# next
 
 🚀⚛️ Getting Started with Next.
 
